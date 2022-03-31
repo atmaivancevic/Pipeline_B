@@ -6,13 +6,8 @@
 #SBATCH -p batch
 #SBATCH -N 1 
 #SBATCH -n 1
-#SBATCH --time=0:10:00 
-#SBATCH --mem=1GB 
-
-# Notification configuration 
-#SBATCH --mail-type=END                                         
-#SBATCH --mail-type=FAIL                                        
-#SBATCH --mail-user=%u@adelaide.edu.au      
+#SBATCH --time=12:00:00 
+#SBATCH --mem=32GB    
 
 # Load BEDTools
 module load BEDTools/2.25.0-foss-2015b
