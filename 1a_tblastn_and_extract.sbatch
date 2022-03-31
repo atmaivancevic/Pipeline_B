@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Example usage:
-# DIR=. DATABASE=hg38.fna QUERY=L1_ORFp.fa RESULTSDIR=. sbatch 1_tblastn_and_extract.sbatch
+# DIR=. DATABASE=hg38.fa QUERY=L1_ORFp.fa RESULTSDIR=. sbatch 1_tblastn_and_extract.sbatch
 
 #SBATCH -p batch
 #SBATCH -N 1 
