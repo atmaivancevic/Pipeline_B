@@ -9,8 +9,8 @@ module load SAMtools
 
 # Make each genome a BLAST database
 
-for i in genomes/*.fna; do makeblastdb -in $i -parse_seqids -dbtype nucl; done
+for i in genomes/*.fa; do makeblastdb -in $i -parse_seqids -dbtype nucl; done
 
 # Create a fai index for each genome
 
-for i in genomes/*.fna; do samtools faidx $i; done
+for i in genomes/*.fa; do samtools faidx $i; done
