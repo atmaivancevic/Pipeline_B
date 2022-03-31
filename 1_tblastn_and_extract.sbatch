@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Example usage:
-# DIR=/data/rc003/atma/horizontalTransfer/genomes/fungi/Yarrowia.lipolytica DATABASE=Yarrowia.lipolytica_GCF_000002525.2_ASM252v1_genomic.fna QUERY=L1_ORFp.fasta RESULTSDIR=/data/rc003/atma/horizontalTransfer/results/L1/tblastned sbatch 1_tblastn_and_extract.sh
+# DIR=/data/rc003/atma/horizontalTransfer/genomes/fungi/Yarrowia.lipolytica DATABASE=Yarrowia.lipolytica_GCF_000002525.2_ASM252v1_genomic.fna QUERY=L1_ORFp.fasta RESULTSDIR=/data/rc003/atma/horizontalTransfer/results/L1/tblastned sbatch 1_tblastn_and_extract.sbatch
 
 #SBATCH -p batch
 #SBATCH -N 1 
