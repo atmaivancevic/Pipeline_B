@@ -10,13 +10,18 @@
 #SBATCH --mem=32GB    
 
 # Load BEDTools
-module load BEDTools/2.25.0-foss-2015b
+module load BEDTools
 
 echo $GENOME
 echo $QUERY
 
 # Run lastz
-lastz $GENOMEDIR/$GENOME[unmask,multiple] $QUERYDIR/$QUERY[unmask,multiple] --chain --gapped --coverage=80 --ambiguous=n --ambiguous=iupac --format=general-:name2,start2,end2,score,strand2,size2,name1,start1,end1 > $GENOME_$QUERY.lastzout
+lastz \
+$GENOMEDIR/$GENOME[unmask,multiple] \
+$QUERYDIR/$QUERY[unmask,multiple] \
+--chain --gapped --coverage=80 --ambiguous=n --ambiguous=iupac \
+--format=general-:name2,start2,end2,score,strand2,size2,name1,start1,end1 \
+> $GENOME_$QUERY.lastzout
 
 # Rearrange columns to put the concatenated file in BED-like form (for BEDTools) 
 awk '{print $7 "\t" $8 "\t" $9 "\t" $1 "\t" "1" "\t" $5}' $GENOME_$QUERY.lastzout > BedFormat_$GENOME_$QUERY.tmp
@@ -39,6 +44,6 @@ bedtools getfasta -s -fi "$GENOMEDIR/$GENOME" -bed "$GENOME"_"$QUERY"_lastz.bed 
 mv "$GENOME"_"$QUERY"_lastz.fasta $RESULTSDIR
 mv "$GENOME"_"$QUERY"_lastz.bed $RESULTSDIR
 
-# Remove temp files
+# Remove temporary files
 rm *.tmp
 rm *.lastzout
