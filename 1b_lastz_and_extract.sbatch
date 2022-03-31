@@ -10,7 +10,7 @@
 #SBATCH --mem=32GB    
 
 # Load BEDTools
-module load BEDTools/2.25.0-foss-2015b
+module load BEDTools
 
 echo $GENOME
 echo $QUERY
