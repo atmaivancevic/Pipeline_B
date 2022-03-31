@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Example usage:
-# DIR=/data/rc003/atma/horizontalTransfer/genomes/fungi/Yarrowia.lipolytica DATABASE=Yarrowia.lipolytica_GCF_000002525.2_ASM252v1_genomic.fna QUERY=L1_ORFp.fasta RESULTSDIR=/data/rc003/atma/horizontalTransfer/results/L1/tblastned sbatch tblastnAndExtract.sh
+# DIR=/data/rc003/atma/horizontalTransfer/genomes/fungi/Yarrowia.lipolytica DATABASE=Yarrowia.lipolytica_GCF_000002525.2_ASM252v1_genomic.fna QUERY=L1_ORFp.fasta RESULTSDIR=/data/rc003/atma/horizontalTransfer/results/L1/tblastned sbatch 1_tblastn_and_extract.sh
 
 #SBATCH -p batch
 #SBATCH -N 1 
@@ -12,7 +12,6 @@
 # Notification configuration 
 #SBATCH --mail-type=END                                         
 #SBATCH --mail-type=FAIL                                        
-#SBATCH --mail-user=%u@adelaide.edu.au      
 
 # Load the necessary modules
 module load BLAST+/2.6.0-foss-2016uofa-Python-2.7.11
