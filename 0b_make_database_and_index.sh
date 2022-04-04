@@ -4,13 +4,13 @@
 # bash 0_make_database_and_index.sh
 
 # Load modules if you are working on a SLURM enivronment, e.g. 
-module load BLAST+
-module load SAMtools
+module load ncbi-blast
+module load samtools
 
 # Make each genome a BLAST database
 
-for i in genomes/*.fa; do makeblastdb -in $i -parse_seqids -dbtype nucl; done
+for i in test_genome/*.fna; do makeblastdb -in $i -parse_seqids -dbtype nucl; done
 
 # Create a fai index for each genome
 
-for i in genomes/*.fa; do samtools faidx $i; done
+for i in test_genome/*.fna; do samtools faidx $i; done
