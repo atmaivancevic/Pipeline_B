@@ -1,23 +1,23 @@
 #!/bin/bash
 
 # Example usage:
-# DIR=. DATABASE=hg38.fa QUERY=L1_ORFp.fa RESULTSDIR=. sbatch 1_tblastn_and_extract.sbatch
+# DIR=test_genome DATABASE=Yarrowia.lipolytica_GCF_000002525.2_ASM252v1_genomic.fna QUERY=L1_ORFp.fasta RESULTSDIR=results sbatch 1a_tblastn_and_extract.sbatch
 
-#SBATCH -p batch
+#SBATCH -p short
 #SBATCH -N 1 
 #SBATCH -c 2
 #SBATCH --time=12:00:00 
 #SBATCH --mem=32GB                                    
 
 # Load the necessary modules
-module load BLAST+
-module load BEDTools
+module load ncbi-blast
+module load bedtools
 
 # Run tblastn
 tblastn \
 -db "$DIR/$DATABASE" \
 -num_threads 2 \
--query /data/rc003/atma/horizontalTransfer/queries/"$QUERY" \
+-query test_query/"$QUERY" \
 -out "$DATABASE"_"$QUERY".out \
 -outfmt "6 qseqid sseqid bitscore qcovs evalue pident length mismatch gapopen qstart qend qseq sstart send sseq" \
 -evalue 1e-5 \
@@ -29,7 +29,7 @@ cat "$DATABASE"_"$QUERY".out \
 | sort -nr -k3 \
 > "$DATABASE"_"$QUERY".out.sorted
 
-# Put the target seq hits in FASTA format (for further checking)
+# Put the target seq hits in FASTA format
 # i.e, remove gaps ("-") from the target sequence (column 15)
 # then print out all of the target seqs, with the header in the form: 
 # >sseqid:sstart-send	qseqid:qstart-qend	score:*,qcov:*,evalue:*,pident:*
@@ -68,16 +68,9 @@ cat "$DATABASE"_"$QUERY"_sseq_headers.txt \
 # Combine minus and plus strand sequences
 cat "$DATABASE"_"$QUERY"_plus.txt "$DATABASE"_"$QUERY"_minus.txt  > "$DATABASE"_"$QUERY"_all.txt
 
-# Sort by chr/scaffold and then by start position in ascending order 
-bedtools sort -i "$DATABASE"_"$QUERY"_all.txt > "$DATABASE"_"$QUERY"_all.txt.sorted
-
-# Merge nested or overlapping intervals
-bedtools merge -s -i "$DATABASE"_"$QUERY"_all.txt.sorted -c 4 -o collapse > "$DATABASE"_"$QUERY"_all.txt.sorted.merged
-
-# Merging broke the BED-like format
-# (i.e. strand is now in 4th column, merged names in 5th column, etc)
-# Rearrange the columns as required
-awk '{print $1 "\t" $2 "\t" $3 "\t" "L1hit" "\t" "1" "\t" $4}' "$DATABASE"_"$QUERY"_all.txt.sorted.merged > "$DATABASE"_"$QUERY"_merged.bed
+# Sort and merge 
+bedtools sort -i "$DATABASE"_"$QUERY"_all.txt \
+| bedtools merge -s -o - -c 4,5,6 -o distinct,distinct,distinct > "$DATABASE"_"$QUERY"_merged.bed
 
 # Extract FASTA from corrected merged BED file
 bedtools getfasta -s -fi "$DIR/$DATABASE" -bed "$DATABASE"_"$QUERY"_merged.bed -fo "$DATABASE"_"$QUERY"_results.fasta
