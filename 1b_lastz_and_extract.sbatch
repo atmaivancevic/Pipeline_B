@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Example usage:
-# GENOMEDIR=. GENOME=hg38.fa QUERYDIR=. QUERY=L1.fasta RESULTSDIR=. sbatch 1b_lastz_and_extract.sbatch
+# GENOMEDIR=test_genome GENOME=Yarrowia.lipolytica_GCF_000002525.2_ASM252v1_genomic.fna QUERYDIR=test_query QUERY=L1_nucl_seqs.fasta RESULTSDIR=results sbatch 1b_lastz_and_extract.sbatch
 
-#SBATCH -p batch
+#SBATCH -p short
 #SBATCH -N 1 
 #SBATCH -n 1
 #SBATCH --time=12:00:00 
 #SBATCH --mem=32GB    
 
 # Load BEDTools
-module load BEDTools
+module load bedtools
 
 echo $GENOME
 echo $QUERY
@@ -23,19 +23,12 @@ $QUERYDIR/$QUERY[unmask,multiple] \
 --format=general-:name2,start2,end2,score,strand2,size2,name1,start1,end1 \
 > $GENOME_$QUERY.lastzout
 
-# Rearrange columns to put the concatenated file in BED-like form (for BEDTools) 
-awk '{print $7 "\t" $8 "\t" $9 "\t" $1 "\t" "1" "\t" $5}' $GENOME_$QUERY.lastzout > BedFormat_$GENOME_$QUERY.tmp
+# Rearrange columns to put the concatenated file in BED-like form (for bedtools) 
+awk '{print $7 "\t" $8 "\t" $9 "\t" $1 "\t" "1" "\t" $5}' $GENOME_$QUERY.lastzout > bedformat_$GENOME_$QUERY.tmp
 
-# Sort by chr/scaffold and then by start position in ascending order 
-bedtools sort -i BedFormat_$GENOME_$QUERY.tmp > Sorted_$GENOME_$QUERY.tmp
-
-# Merge nested or overlapping intervals
-bedtools merge -s -i Sorted_$GENOME_$QUERY.tmp -c 4 -o collapse > Merged_$GENOME_$QUERY.tmp
-
-# Merging broke the BED-like format
-# (i.e. strand is now in 4th column, merged names in 5th column, etc)
-# Rearrange the columns as required
-awk '{print $1 "\t" $2 "\t" $3 "\t" $5 "\t" "1" "\t" $4}' Merged_$GENOME_$QUERY.tmp > "$GENOME"_"$QUERY"_lastz.bed
+# Sort and merge 
+bedtools sort -i bedformat_$GENOME_$QUERY.tmp \
+| bedtools merge -s -i - -c 4,5,6 -o distinct,distinct,distinct > "$GENOME"_"$QUERY"_lastz.bed
 
 # Extract FASTA from corrected merged BED file
 bedtools getfasta -s -fi "$GENOMEDIR/$GENOME" -bed "$GENOME"_"$QUERY"_lastz.bed -fo "$GENOME"_"$QUERY"_lastz.fasta
