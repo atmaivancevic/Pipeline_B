@@ -70,7 +70,7 @@ cat "$DATABASE"_"$QUERY"_plus.txt "$DATABASE"_"$QUERY"_minus.txt  > "$DATABASE"_
 
 # Sort and merge 
 bedtools sort -i "$DATABASE"_"$QUERY"_all.txt \
-| bedtools merge -s -o - -c 4,5,6 -o distinct,distinct,distinct > "$DATABASE"_"$QUERY"_merged.bed
+| bedtools merge -s -i - -c 4,5,6 -o distinct,distinct,distinct > "$DATABASE"_"$QUERY"_merged.bed
 
 # Extract FASTA from corrected merged BED file
 bedtools getfasta -s -fi "$DIR/$DATABASE" -bed "$DATABASE"_"$QUERY"_merged.bed -fo "$DATABASE"_"$QUERY"_results.fasta
