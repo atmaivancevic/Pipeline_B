@@ -2,11 +2,11 @@
 
 # Example usage:
 #
-# GENOMEDIR=test_genome 
-# GENOME=YarrowiaLipolytica_ASM252v1.fa 
-# QUERYDIR=test_query 
-# QUERY=L1_nucl_seqs.fasta 
-# RESULTSDIR=results 
+# GENOMEDIR=test_genome \
+# GENOME=YarrowiaLipolytica_ASM252v1.fa \
+# QUERYDIR=test_query \
+# QUERY=L1_nucl_seqs.fasta \
+# RESULTSDIR=results \
 # sbatch 1b_lastz_and_extract.sbatch
 
 #SBATCH -p short
