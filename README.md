@@ -107,6 +107,11 @@ INDIR=results/allSpeciesCombined FILE=allSpecies_L1.fasta ID=80 PREFIX=c sbatch 
 ```
 
 #### 3b) All-against-all clustering of amino acid sequences using USEARCH.
+
+VSEARCH (the open source alternative to USEARCH) does not support protein sequences, but will not fail if given protein sequence input. Make sure you use another program (e.g. Cd-hit or USEARCH) to clustering amino acid sequences. The 32-bit version of USEARCH is open source. 
+
+The following script can be used to perform all-against-all cluserting of amino acid sequences from ORFs, or reverse transcriptase domains from retrotransposons/transposase domains from DNA transposons. 
+
 Run [blah](blah).
 Example usage:
 ```bash
