@@ -10,8 +10,8 @@ It is a simplified version of the code used to infer horizontal transfer events 
 - SAMtools (http://www.htslib.org/)
 - BEDtools (http://bedtools.readthedocs.io/en/latest/)
 - CENSOR, which requires wu-blast and bioperl (https://girinst.org/downloads/software/censor/)
-- USEARCH (https://www.drive5.com/usearch/)
 - VSEARCH (https://github.com/torognes/vsearch)
+- USEARCH (https://www.drive5.com/usearch/)
 
 #### Prerequisites
 - Some level of familiarity with computers and queuing systems (e.g. SLURM)
