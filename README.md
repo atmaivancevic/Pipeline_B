@@ -28,7 +28,9 @@ As the names given to genome assemblies are not usually informative, you will wa
 
 Run [0a_rename_genome.sh](0a_rename_genome.sh). 
 Example usage:
-
+```bash
+GENOME=<source_genome> SPECIES=<species_name> bash 0a_rename_genome.sh
+```
 
 
 #### 0b) Append species name to each genome fasta file
