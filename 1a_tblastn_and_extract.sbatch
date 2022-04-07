@@ -2,10 +2,10 @@
 
 # Example usage:
 #
-# DIR=test_genome 
-# DATABASE=YarrowiaLipolytica_ASM252v1.fa 
-# QUERY=L1_ORFp.fasta 
-# RESULTSDIR=results 
+# DIR=test_genome \
+# DATABASE=YarrowiaLipolytica_ASM252v1.fa \
+# QUERY=L1_ORFp.fasta \
+# RESULTSDIR=results \
 # sbatch 1a_tblastn_and_extract.sbatch
 
 #SBATCH -p short
