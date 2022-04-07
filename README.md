@@ -84,7 +84,7 @@ Example usage:
 INDIR=results FILE=YarrowiaLipolytica_L1_combined.fasta OUTDIR=results/censored sbatch 2a_censor_sequences.sbatch
 ```
 
-#### 2b) Confirm and extract hits that match the correct TE family
+#### 2b) Confirm and extract hits that match the correct TE family.
 Run [2b_check_censor_output.sbatch](2b_check_censor_output.sbatch).
 Example usage:
 ```bash
