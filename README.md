@@ -14,7 +14,7 @@ It is a simplified version of the code used to infer horizontal transfer events 
 - USEARCH (https://www.drive5.com/usearch/)
 
 #### Prerequisites
-- Some level of familiarity with computers and queuing systems (e.g. SLURM)
+- Some level of familiarity with computers and queuing systems (e.g. SLURM).
 
 #### Test dataset
 A test genome (fungus *Yarrowia lipolytica*) has been placed in [test_genome](test_genome), along with a set of L1 repeats as a [test_query](test_query). We recommend trying out the workflow below using these files first.
