@@ -49,5 +49,29 @@ Example usage:
 DIR=test_genome DATABASE=YarrowiaLipolytica_ASM252v1.fa QUERY=L1_ORFp.fasta RESULTSDIR=results sbatch 1a_tblastn_and_extract.sbatch
 ```
 
+#### 1b) (Optional) Use BLASTN or LASTZ with nucleotide sequence queries
+
+Run [1b_lastz_and_extract.sbatch](1b_lastz_and_extract.sbatch).
+Example usage:
+```bash
+GENOMEDIR=test_genome GENOME=YarrowiaLipolytica_ASM252v1.fa QUERYDIR=test_query QUERY=L1_nucl_seqs.fasta RESULTSDIR=results sbatch 1b_lastz_and_extract.sbatch
+```
+
+#### 1c) Blah
+
+Run [blah](blah).
+Example usage:
+```bash
+blah
+```
+
+#### 1d) Blah
+
+Run [blah](blah).
+Example usage:
+```bash
+blah
+```
+
 
 
