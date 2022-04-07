@@ -17,7 +17,7 @@ It is a simplified version of the code used to infer horizontal transfer events 
 - Some level of familiarity with computers and queuing systems (e.g. SLURM)
 
 #### Scripts and test genome
-A test genome (fungus *Yarrowia lipolytica*) has been placed in [test_genome](test_genome), along with a set of L1 elements as a [test_query](test_query). We recommend trying out the workflow below on this genome first. 
+A test genome (fungus *Yarrowia lipolytica*) has been placed in [test_genome](test_genome), along with a set of L1 repeats as a [test_query](test_query). We recommend trying out the workflow below on this genome first. 
 
 0)
 
