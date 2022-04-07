@@ -34,5 +34,9 @@ GENOME=<source_genome> SPECIES=<species_name> bash 0a_rename_genome.sh
 
 #### 0b) Make each genome a BLAST database and create indexes
 Run [0b_make_database_and_index.sh](0b_make_database_and_index.sh). 
+Example usage: 
+```bash
+bash 0b_make_database_and_index.sh
+```
 
 
