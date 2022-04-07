@@ -57,20 +57,20 @@ Example usage:
 GENOMEDIR=test_genome GENOME=YarrowiaLipolytica_ASM252v1.fa QUERYDIR=test_query QUERY=L1_nucl_seqs.fasta RESULTSDIR=results sbatch 1b_lastz_and_extract.sbatch
 ```
 
-#### 1c) Blah
+#### 1c) For each genome, combine all identified nucleotide sequences from the previous steps
 
-Run [blah](blah).
+Run [1c_combine_hits.sbatch](1c_combine_hits.sbatch).
 Example usage:
 ```bash
-blah
+SPECIES=YarrowiaLipolytica ELEMENT=L1 LASTZFILE=YarrowiaLipolytica_ASM252v1.fa_L1_nucl_seqs.fasta_lastz.bed TBLASTNFILE=YarrowiaLipolytica_ASM252v1.fa_L1_ORFp.fasta_merged.bed GENOME=YarrowiaLipolytica_ASM252v1.fa RESULTSDIR=results sbatch 1c_combine_hits.sbatch
 ```
 
-#### 1d) Blah
+#### 1d) Add header annotations to indicate the genome that each sequence was derived from
 
-Run [blah](blah).
+Run [1d_append_name_to_headers.sh](1d_append_name_to_headers.sh).
 Example usage:
 ```bash
-blah
+SPECIES=YarrowiaLipolytica ELEMENT=L1 RESULTSDIR=results bash 1d_append_name_to_headers.sh
 ```
 
 
