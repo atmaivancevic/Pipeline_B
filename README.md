@@ -32,9 +32,7 @@ Example usage:
 GENOME=<source_genome> SPECIES=<species_name> bash 0a_rename_genome.sh
 ```
 
-
-#### 0b) Append species name to each genome fasta file
-This will save you a lot of headaches later on. Most genomes are given useless names like GCF_000002525.2_ASM252v1_genomic.fna.
-Use [renameGenome.q](scripts/renameGenome.q). 
+#### 0b) Make each genome a BLAST database and create indexes
+Run [0b_make_database_and_index.sh](0b_make_database_and_index.sh). 
 
 
