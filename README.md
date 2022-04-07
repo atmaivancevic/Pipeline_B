@@ -112,10 +112,10 @@ VSEARCH (the open source alternative to USEARCH) does not support protein sequen
 
 The following script can be used to perform all-against-all cluserting of amino acid sequences from ORFs, or reverse transcriptase domains from retrotransposons/transposase domains from DNA transposons. 
 
-Run [blah](blah).
+Run [3b_usearch_cluster_for_aa_seqs.sbatch](3b_usearch_cluster_for_aa_seqs.sbatch).
 Example usage:
 ```bash
-bah
+INDIR=results/allSpeciesCombined FILE=allSpecies_L1_ORFp.fasta ID=90 PREFIX=r sbatch 3b_usearch_cluster_for_aa_seqs.sbatch
 ```
 
 
