@@ -16,17 +16,18 @@ It is a simplified version of the code used to infer horizontal transfer events 
 #### Prerequisites
 - Some level of familiarity with computers and queuing systems (e.g. SLURM)
 
-#### Scripts and test genome
+#### Test dataset
 A test genome (fungus *Yarrowia lipolytica*) has been placed in [test_genome](test_genome), along with a set of L1 repeats as a [test_query](test_query). We recommend trying out the workflow below on this genome first. 
 
-0)
+## Usage
 
-1)
+### 1) Extraction of L1 and BovB retrotransposons from genome data
 
-2)
+#### 1a) Download or acquire genomes of interest
+755 genomes were downloaded from public databases (UCSC and NCBI); four more were acquired from collaborators. All genomes were downloaded using ```wget```, as recommended by NCBI (https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/). See Supplementary Table 1 for the source and assembly version of each genome used.
 
-3)
-
-etc
+#### 1b) Append species name to each genome fasta file
+This will save you a lot of headaches later on. Most genomes are given useless names like GCF_000002525.2_ASM252v1_genomic.fna.
+Use [renameGenome.q](scripts/renameGenome.q). 
 
 
