@@ -39,4 +39,15 @@ Example usage:
 bash 0b_make_database_and_index.sh
 ```
 
+### 1) BLAST TE of interest against all available genomes.
+
+#### 1a) Use TBLASTN with protein sequence queries
+This will identify similar TEs in distantly related species. Output will be nucleotide sequences.
+Run [1a_tblastn_and_extract.sbatch](1a_tblastn_and_extract.sbatch).
+Example usage:
+```bash
+# DIR=test_genome DATABASE=YarrowiaLipolytica_ASM252v1.fa QUERY=L1_ORFp.fasta RESULTSDIR=results sbatch 1a_tblastn_and_extract.sbatch
+```
+
+
 
