@@ -91,6 +91,24 @@ Example usage:
 SPECIES=Yarrowia.lipolytica FILE=Yarrowia.lipolytica_L1_combined.fasta GENOME=test_genome/YarrowiaLipolytica_ASM252v1.fa ELEMENT=L1 QUERY=test_query/known_L1_elements_from_repbase.txt CENSORDIR=results/censored sbatch 2b_check_censor_output.sbatch
 ```
 
+### 3) Cluster all sequences obtained from the iterative alignment screening.
 
+Prior to this step, you will need to combine hits from all genomes into one file. Make sure that sequence headers indicate the species that each TE sequence was derived from.
+
+#### 3a)  All-against-all clustering of nucleotide sequences using VSEARCH.
+You can use full-length nucleotide sequences, or nucleotide sequences of the open reading frames only. This clustering step is important as it will reveal likely HTT events which are manifested as clusters of highly similar elements that include elements from multiple species. We have found it best to use sequence divergence cut offs that cluster most closely related sequences (e.g. <20% divergent).
+
+Run [3a_vsearch_cluster_for_nucleotide_seqs.sbatch](3a_vsearch_cluster_for_nucleotide_seqs.sbatch), changing the clustering identity threshold (ID) as required. 
+Example usage:
+```bash
+INDIR=results/allSpeciesCombined FILE=allSpecies_L1.fasta ID=80 PREFIX=c sbatch 3a_vsearch_cluster_for_nucleotide_seqs.sbatch
+```
+
+#### 3b) All-against-all clustering of amino acid sequences using USEARCH.
+Run [blah](blah).
+Example usage:
+```bash
+bah
+```
 
 
