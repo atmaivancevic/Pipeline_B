@@ -118,4 +118,4 @@ Example usage:
 INDIR=results/allSpeciesCombined FILE=allSpecies_L1_ORFp.fasta ID=90 PREFIX=r sbatch 3b_usearch_cluster_for_aa_seqs.sbatch
 ```
 
-
+Finally, identify clusters containing TE sequences from multiple species (e.g. based on the sequence header names). These clusters are the HTT candidates. 
