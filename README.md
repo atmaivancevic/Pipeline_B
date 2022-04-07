@@ -46,7 +46,7 @@ This will identify similar TEs in distantly related species. Output will be nucl
 Run [1a_tblastn_and_extract.sbatch](1a_tblastn_and_extract.sbatch).
 Example usage:
 ```bash
-# DIR=test_genome DATABASE=YarrowiaLipolytica_ASM252v1.fa QUERY=L1_ORFp.fasta RESULTSDIR=results sbatch 1a_tblastn_and_extract.sbatch
+DIR=test_genome DATABASE=YarrowiaLipolytica_ASM252v1.fa QUERY=L1_ORFp.fasta RESULTSDIR=results sbatch 1a_tblastn_and_extract.sbatch
 ```
 
 
