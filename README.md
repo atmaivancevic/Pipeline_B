@@ -73,5 +73,24 @@ Example usage:
 SPECIES=YarrowiaLipolytica ELEMENT=L1 RESULTSDIR=results bash 1d_append_name_to_headers.sh
 ```
 
+Repeat screening in an iterative process (e.g. BLAST-ing the new, larger, query dataset against each genome and then combining the output) until no new hits are found. 
+
+### 2) Perform a reciprocal best hit check.
+
+#### 2a) Use CENSOR to compare hits against known repeat databases (e.g. RepBase or Dfam).
+Run [2a_censor_sequences.sbatch](2a_censor_sequences.sbatch).
+Example usage:
+```bash
+INDIR=results FILE=YarrowiaLipolytica_L1_combined.fasta OUTDIR=results/censored sbatch 2a_censor_sequences.sbatch
+```
+
+#### 2b) Confirm and extract hits that match the correct TE family
+Run [2b_check_censor_output.sbatch](2b_check_censor_output.sbatch).
+Example usage:
+```bash
+SPECIES=Yarrowia.lipolytica FILE=Yarrowia.lipolytica_L1_combined.fasta GENOME=test_genome/YarrowiaLipolytica_ASM252v1.fa ELEMENT=L1 QUERY=test_query/known_L1_elements_from_repbase.txt CENSORDIR=results/censored sbatch 2b_check_censor_output.sbatch
+```
+
+
 
 
