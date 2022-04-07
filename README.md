@@ -21,12 +21,12 @@ A test genome (fungus *Yarrowia lipolytica*) has been placed in [test_genome](te
 
 ## Usage
 
-### 1) Extraction of L1 and BovB retrotransposons from genome data
+### 0) Download and prepare the genomes you want to screen.
 
-#### 1a) Download or acquire genomes of interest
-755 genomes were downloaded from public databases (UCSC and NCBI); four more were acquired from collaborators. All genomes were downloaded using ```wget```, as recommended by NCBI (https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/). See Supplementary Table 1 for the source and assembly version of each genome used.
+#### 0a) Append species names to the genome name
+As the names given to genome assemblies are not usually informative, you will want to append species names to the genome names. Run [0a_rename_genome.sh](0a_rename_genome.sh). 
 
-#### 1b) Append species name to each genome fasta file
+#### 0b) Append species name to each genome fasta file
 This will save you a lot of headaches later on. Most genomes are given useless names like GCF_000002525.2_ASM252v1_genomic.fna.
 Use [renameGenome.q](scripts/renameGenome.q). 
 
